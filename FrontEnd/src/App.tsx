@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+// @ts-ignore
 import reactLogo from './assets/react.svg';
 import './App.css'
 import { useDBService } from './contexts/DBContext'
