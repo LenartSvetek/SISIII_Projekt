@@ -6,7 +6,7 @@ const DBContext = createContext<DBService | null>(null);
 export const DBProvider = ({ children }) => {
 
     // @ts-ignore
-    const service = new DBService(import.meta.env.VITE_DB_API_URL && import.meta.env.VITE_DB_API_PORT && import.meta.env.VITE_DB_API_URL + ":" + import.meta.env.VITE_DB_API_PORT || 'http://localhost:6969/');
+    const service = new DBService({ BaseUrl: import.meta.env.VITE_DB_API_URL && import.meta.env.VITE_DB_API_PORT && import.meta.env.VITE_DB_API_URL + ":" + import.meta.env.VITE_DB_API_PORT || 'http://localhost:6969/'});
 
     return (
         <DBContext.Provider value={service}>
@@ -15,4 +15,4 @@ export const DBProvider = ({ children }) => {
     );
 };
 
-export const useBackend = () => useContext(DBContext);
+export const useDBService = () => useContext(DBContext);
