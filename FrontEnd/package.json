@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev":"concurrently \"npx typed-css-modules -p \"src/**/*.module.scss\" --watch\" \"vite --host\"",
+    "dev":"concurrently \"npx typed-css-modules -p \"src/pages/**/*.module.scss\" --watch\" \"vite --host\"",
     "build": "vite build",
     "preview": "vite preview"
   },

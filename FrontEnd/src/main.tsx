@@ -12,6 +12,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import Index from './pages/Index';
+import Layout from './pages/Layout';
 
 library.add(fas, far, fab);
 
@@ -20,7 +21,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <BrowserRouter>
             <DBProvider>
                 <Routes>
-                    <Route path="/" element={<Index />} />
+                    <Route path="/" element={<Layout />}>
+                        <Route index element={<Index />}/>
+                    </Route>
                 </Routes>
             </DBProvider>
         </BrowserRouter>

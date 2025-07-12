@@ -39,8 +39,8 @@ function Index() {
             <h1>Vite + React</h1>
             <div className={styles.KrNeki}>
                 {
-                    TableInfoList.map((TableInfo) => 
-                        <button value={TableInfo.TableName} onClick={onClick}>
+                    TableInfoList.map((TableInfo, index) => 
+                        <button key={`TableInfo_${index}`} value={TableInfo.TableName} onClick={onClick}>
                             <h2>{TableInfo.TableName}</h2>
                             <FontAwesomeIcon icon={TableInfo.TableIcon as any}></FontAwesomeIcon>
                         </button>     
