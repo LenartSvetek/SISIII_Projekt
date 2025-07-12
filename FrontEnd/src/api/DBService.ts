@@ -14,7 +14,7 @@ export class DBService {
         });
     }
 
-    public async GetTableInfo(): Promise<ITableInfo[]> {
+    public async GetTableInfoList(): Promise<ITableInfo[]> {
         return await this.axios.get("/api/TableInfo")
             .then(TableInfos => {
                 console.log(TableInfos);
@@ -23,4 +23,20 @@ export class DBService {
             .catch(() =>[]);
     }
 
+    public async GetTableInfo(TableName : string) : Promise<any> {
+        return await this.axios.get(`/api/TableInfo/${TableName}`);
+    }
+
+    public static mysqlTypeToJsType(mysqlType) {
+    const type = mysqlType.toLowerCase();
+
+    if (type.includes('int')) return 'number';
+    if (type.includes('decimal') || type.includes('float') || type.includes('double')) return 'number';
+    if (type.includes('char') || type.includes('text') || type.includes('enum') || type.includes('set')) return 'string';
+    if (type.includes('date') || type.includes('time') || type.includes('year')) return 'Date';
+    if (type.includes('blob') || type.includes('binary')) return 'Buffer';
+    if (type.includes('boolean') || type.includes('tinyint(1)')) return 'boolean';
+    
+    return 'any';
+}
 }

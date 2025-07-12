@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 // @ts-ignore
-import reactLogo from './assets/react.svg';
-import './App.css'
-import { useDBService } from './contexts/DBContext'
+import reactLogo from '@/assets/react.svg';
+
+import styles from './Index.module.scss'
 
 
-
-import { ITableInfo } from './api/IDBServiceProps';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ITableInfo } from '../api/IDBServiceProps';
+import { useDBService } from '../contexts/DBContext';
+import { faSquarePollHorizontal } from '@fortawesome/free-solid-svg-icons';
 
-function App() {
+function Index() {
     const DBService = useDBService();
     
     const [count, setCount] = useState(0);
@@ -26,7 +27,7 @@ function App() {
     }
 
     return (
-        <div className="App">
+        <div className={styles.App}>
             <div>
                 <a href="https://vitejs.dev" target="_blank">
                     <img src="/vite.svg" className="logo" alt="Vite logo" />
@@ -36,7 +37,7 @@ function App() {
                 </a>
             </div>
             <h1>Vite + React</h1>
-            <div className="card">
+            <div className={styles.KrNeki}>
                 {
                     TableInfoList.map((TableInfo) => 
                         <button value={TableInfo.TableName} onClick={onClick}>
@@ -53,4 +54,4 @@ function App() {
     )
 }
 
-export default App
+export default Index

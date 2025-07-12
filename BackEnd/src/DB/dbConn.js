@@ -16,10 +16,18 @@ conn.connect((err) => {
 })
 
 let dataPool = {
-    getTableInfo: () => {
+    getTableInfoList: () => {
         return new Promise((resolve, reject) => {
-            conn.query(`SELECT * FROM TableInfo`, (err,res)=> {
-                if(err){return reject(err)}
+            conn.query(`SELECT * FROM TableInfo`, (err, res) => {
+                if (err) { return reject(err) }
+                return resolve(res)
+            })
+        })
+    },
+    getTableInfo: (TableName) => {
+        return new Promise((resolve, reject) => {
+            conn.query(`DESCRIBE ${conn.escapeId(TableName)}`, (err, res) => {
+                if (err) { return reject(err) }
                 return resolve(res)
             })
         })
