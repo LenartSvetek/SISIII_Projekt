@@ -1,0 +1,56 @@
+.LeftPanel {
+    position: absolute;
+    border-right: 1px solid black;
+
+    height: calc(100dvh - 60px);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+    padding-top: 5px;
+
+    width: 40px;
+
+    overflow: hidden;
+    overflow-y: auto;
+    background-color: white;
+
+    transition: 0.2s all;
+
+    z-index: 1000;
+
+    &:hover {
+        width: 150px;
+    }
+
+    &.focused {
+        width: 150px;
+    }
+
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    a {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+
+        svg{
+            width: 40px;
+        }
+
+        text-wrap: nowrap;
+        font-size: 20px;
+
+        text-decoration: none;
+
+        color: black;
+
+        span { 
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }        
+    }
+}

@@ -6,8 +6,8 @@ import styles from './Index.module.scss'
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ITableInfo } from '../api/IDBServiceProps';
-import { useDBService } from '../contexts/DBContext';
+import { ITableInfo } from '../../api/IDBServiceProps';
+import { useDBService } from '../../contexts/DBContext';
 import { faSquarePollHorizontal } from '@fortawesome/free-solid-svg-icons';
 
 function Index() {
@@ -54,4 +54,4 @@ function Index() {
     )
 }
 
-export default Index
+export default Index;

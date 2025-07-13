@@ -1,33 +1,33 @@
 {
-  "name": "frontend",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev":"concurrently \"npx typed-css-modules -p \"src/pages/**/*.module.scss\" --watch\" \"vite --host\"",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.7.2",
-    "@fortawesome/fontawesome-svg-core": "^6.7.2",
-    "@fortawesome/free-brands-svg-icons": "^6.7.2",
-    "@fortawesome/free-regular-svg-icons": "^6.7.2",
-    "@fortawesome/free-solid-svg-icons": "^6.7.2",
-    "@fortawesome/react-fontawesome": "^0.2.2",
-    "axios": "^1.10.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router": "^7.6.3"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.22",
-    "@types/react-dom": "^18.0.7",
-    "@vitejs/plugin-react": "^2.2.0",
-    "concurrently": "^9.2.0",
-    "sass": "^1.89.2",
-    "typed-css-modules": "^0.9.1",
-    "vite": "^3.2.0",
-    "vite-tsconfig-paths": "^5.1.4"
-  }
+    "name": "frontend",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "concurrently \"npx typed-css-modules -p \\\"src/pages/**/*.module.scss\\\" --watch\" \"npx typed-css-modules -p \\\"src/components/**/*.module.scss\\\" --watch\" \"vite --host\"",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.7.2",
+        "@fortawesome/fontawesome-svg-core": "^6.7.2",
+        "@fortawesome/free-brands-svg-icons": "^6.7.2",
+        "@fortawesome/free-regular-svg-icons": "^6.7.2",
+        "@fortawesome/free-solid-svg-icons": "^6.7.2",
+        "@fortawesome/react-fontawesome": "^0.2.2",
+        "axios": "^1.10.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router": "^7.6.3"
+    },
+    "devDependencies": {
+        "@types/react": "^18.0.22",
+        "@types/react-dom": "^18.0.7",
+        "@vitejs/plugin-react": "^2.2.0",
+        "concurrently": "^9.2.0",
+        "sass": "^1.89.2",
+        "typed-css-modules": "^0.9.1",
+        "vite": "^3.2.0",
+        "vite-tsconfig-paths": "^5.1.4"
+    }
 }

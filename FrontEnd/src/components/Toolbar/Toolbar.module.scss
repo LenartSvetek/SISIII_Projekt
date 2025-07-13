@@ -1,0 +1,12 @@
+.Toolbar {
+    display: inline-flex;
+    flex-wrap: nowrap;
+
+    background-color: white;
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.5));
+
+    overflow: hidden;
+
+    height: 40px;
+    border-radius: 12px;
+}
