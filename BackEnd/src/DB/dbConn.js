@@ -15,7 +15,7 @@ conn.connect((err) => {
     console.log('Connection established');
 })
 
-let dataPool = {
+let TableInfo = {
     getTableInfoList: () => {
         return new Promise((resolve, reject) => {
             conn.query(`SELECT * FROM TableInfo`, (err, res) => {
@@ -24,9 +24,9 @@ let dataPool = {
             })
         })
     },
-    getTableInfo: (TableName) => {
+    getTableColumns: (TableName) => {
         return new Promise((resolve, reject) => {
-            conn.query(`DESCRIBE ${conn.escapeId(TableName)}`, (err, res) => {
+            conn.query(`SELECT TC.* FROM TableInfo TI INNER JOIN TableColumns TC ON TC.TableInfoId = TI.TabInfoId WHERE TI.TableName LIKE "${TableName}"`, (err, res) => {
                 if (err) { return reject(err) }
                 return resolve(res)
             })
@@ -34,4 +34,15 @@ let dataPool = {
     }
 }
 
-module.exports = dataPool;
+let Table = {
+    getTableData: (TableName) => {
+        return new Promise((resolve, reject) => {
+            conn.query(`SELECT * FROM ${conn.escapeId(TableName)}`, (err, res) => {
+                if (err) { return reject(err) }
+                return resolve(res)
+            })
+        })
+    }
+}
+
+module.exports = { TableInfo, Table };

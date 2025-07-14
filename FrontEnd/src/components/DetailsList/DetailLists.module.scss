@@ -5,13 +5,18 @@ $resizeBarWidth: 5px;
     flex-direction: column;
     overflow-x: auto;
     background-color: white;
-    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.5));
 
     border: 1px solid lightgray;
     border-radius: 12px;
 
     .Header {
         display: flex;
+
+        padding: 10px 0px;
+        h3 {
+            padding-left: 5px;
+        }
     }
 
     > div > div {
@@ -58,6 +63,14 @@ $resizeBarWidth: 5px;
         }
     }
 
+
+    .contentCell {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 5px 0px;
+        padding-left: 5px;
+    }
     
     .resizeBar {
         appearance: none;

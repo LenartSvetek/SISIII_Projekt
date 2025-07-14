@@ -19,6 +19,9 @@ app.use(cors({
 const TableInfo = require("./api/TableInfo/TableInfo.js")
 app.use("/api/TableInfo/", TableInfo);
 
+const Table = require("./api/Table/Table.js")
+app.use("/api/Table/", Table);
+
 app.get("/",(req,res)=>{
 res.send("hola")
 })

@@ -1,0 +1,14 @@
+
+> backend@1.0.0 dev
+> node src/index.js
+
+[dotenv@17.2.0] injecting env (5) from .env (tip: ⚙️  write to custom object with { processEnv: myObject })
+Server is running on port: 6969
+Connection established
+
+> backend@1.0.0 dev
+> node src/index.js
+
+[dotenv@17.2.0] injecting env (5) from .env (tip: 🔐 encrypt with dotenvx: https://dotenvx.com)
+Server is running on port: 6969
+Connection established

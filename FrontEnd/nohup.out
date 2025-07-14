@@ -1,0 +1,59 @@
+
+> frontend@0.0.0 dev
+> concurrently "npx typed-css-modules -p \"src/pages/**/*.module.scss\" --watch" "npx typed-css-modules -p \"src/components/**/*.module.scss\" --watch" "vite --host"
+
+[2] 
+[2]   VITE v3.2.11  ready in 1680 ms
+[2] 
+[2]   ➜  Local:   http://localhost:4200/
+[2]   ➜  Network: http://88.200.63.148:4200/
+[1] Watch .//src/components/**/*.module.scss...
+[0] Watch .//src/pages/**/*.module.scss...
+[0] Wrote /home/studenti/famnit/89231394/Documents/FAMNIT/FAMNIT-II/SySIII/Projekt/FrontEnd/src/pages/Layout.module.scss.d.ts
+[0] Wrote /home/studenti/famnit/89231394/Documents/FAMNIT/FAMNIT-II/SySIII/Projekt/FrontEnd/src/pages/Index/IndexDetails.module.scss.d.ts
+[0] Wrote /home/studenti/famnit/89231394/Documents/FAMNIT/FAMNIT-II/SySIII/Projekt/FrontEnd/src/pages/Index/Index.module.scss.d.ts
+[1] Wrote /home/studenti/famnit/89231394/Documents/FAMNIT/FAMNIT-II/SySIII/Projekt/FrontEnd/src/components/DetailsList/DetailLists.module.scss.d.ts
+[1] Wrote /home/studenti/famnit/89231394/Documents/FAMNIT/FAMNIT-II/SySIII/Projekt/FrontEnd/src/components/Toolbar/Toolbar.module.scss.d.ts
+[1] Wrote /home/studenti/famnit/89231394/Documents/FAMNIT/FAMNIT-II/SySIII/Projekt/FrontEnd/src/components/Layout/LeftPanel/LeftPanel.module.scss.d.ts
+[1] Wrote /home/studenti/famnit/89231394/Documents/FAMNIT/FAMNIT-II/SySIII/Projekt/FrontEnd/src/components/Toolbar/Controlls/TBButton.module.scss.d.ts
+[2] DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+[2] 
+[2] More info: https://sass-lang.com/d/legacy-js-api
+[2] 
+[2] DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+[2] 
+[2] More info: https://sass-lang.com/d/legacy-js-api
+[2] 
+[2] DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+[2] 
+[2] More info: https://sass-lang.com/d/legacy-js-api
+[2] 
+[2] DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+[2] 
+[2] More info: https://sass-lang.com/d/legacy-js-api
+[2] 
+[2] DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+[2] 
+[2] More info: https://sass-lang.com/d/legacy-js-api
+[2] 
+[2] DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+[2] 
+[2] More info: https://sass-lang.com/d/legacy-js-api
+[2] 
+[2] DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+[2] 
+[2] More info: https://sass-lang.com/d/legacy-js-api
+[2] 
+[2] 10:39:05 PM [vite] hmr update /src/pages/Index/Index.tsx
+[0] Terminated
+[1] Terminated
+
+> frontend@0.0.0 prod
+> vite --host
+
+Port 4200 is in use, trying another one...
+
+  VITE v3.2.11  ready in 833 ms
+
+  ➜  Local:   http://localhost:4201/
+  ➜  Network: http://88.200.63.148:4201/

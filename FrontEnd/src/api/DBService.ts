@@ -23,8 +23,12 @@ export class DBService {
             .catch(() =>[]);
     }
 
-    public async GetTableInfo(TableName : string) : Promise<any> {
-        return await this.axios.get(`/api/TableInfo/${TableName}`);
+    public async GetTableColumns(TableName : string) : Promise<any[]> {
+        return (await (this.axios.get(`/api/TableInfo/columns/${TableName}`))).data;
+    }
+
+    public async GetTableData(TableName : string) : Promise<any[]> {
+        return (await (this.axios.get(`/api/Table/${TableName}`))).data;
     }
 
     public static mysqlTypeToJsType(mysqlType) {

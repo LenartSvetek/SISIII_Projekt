@@ -17,7 +17,12 @@ export interface IColumnConfig {
     IsResizable ?: boolean;
 }
 
-export const config : IColumnConfig = {
+export interface IColumnDefConfig extends IColumnConfig {
+    FinalMinWidth : number;
+}
+
+export const config : IColumnDefConfig = {
     Width : 140,
-    IsResizable: true
+    IsResizable: true,
+    FinalMinWidth : 100
 }

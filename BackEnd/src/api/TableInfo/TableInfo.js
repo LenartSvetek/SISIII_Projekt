@@ -1,10 +1,10 @@
 const express= require("express")
-const TableInfo = express.Router();
-const DB=require('../../DB/dbConn')
+const TableInfoRoute = express.Router();
+const { TableInfo }=require('../../DB/dbConn')
 
-TableInfo.get('/', async (req, res, next)=>{
+TableInfoRoute.get('/', async (req, res, next)=>{
    try{
-       var queryResult = await DB.getTableInfoList();
+       var queryResult = await TableInfo.getTableInfoList();
        res.json(queryResult)
    }
    catch(err){
@@ -13,9 +13,9 @@ TableInfo.get('/', async (req, res, next)=>{
    }
 })
 
-TableInfo.get('/:TableName', async (req, res, next) => {
+TableInfoRoute.get('/columns/:TableName', async (req, res, next) => {
     try{
-       var queryResult = await DB.getTableInfo(req.params.TableName);
+       var queryResult = await TableInfo.getTableColumns(req.params.TableName);
        res.json(queryResult)
    }
    catch(err){
@@ -24,4 +24,4 @@ TableInfo.get('/:TableName', async (req, res, next) => {
    }
 })
 
-module.exports = TableInfo;
+module.exports = TableInfoRoute;

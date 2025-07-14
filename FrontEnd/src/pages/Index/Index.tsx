@@ -23,7 +23,7 @@ function Index() {
     }, [])
 
     let onClick = (ev : React.MouseEvent<HTMLButtonElement>) => {
-        DBService?.GetTableInfo(ev.currentTarget.value).then(console.log).catch(console.error);
+        DBService?.GetTableInfoList(ev.currentTarget.value).then(console.log).catch(console.error);
     }
 
     return (
