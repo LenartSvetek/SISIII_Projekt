@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 
 import styles from "./LeftPanel.module.scss";
-import { ITableInfo } from "@/api/IDBServiceProps";
+import { ITableInfo } from "@/api/DBService/IDBServiceProps";
 
 export default function LeftPanel() {
     const DBService = useDBService();
@@ -34,10 +34,12 @@ export default function LeftPanel() {
 
     return (
         <div className={`${styles.LeftPanel} ${isFocused? styles.focused : ""}`} onClick={focus.bind(this)}>
-            <Link to={"/"} onClick={unFocus.bind(this)}><FontAwesomeIcon icon="fa-solid fa-house" /><span>Home</span></Link>
+            {/* @ts-ignore */}
+            <Link to={"/admin"} onClick={unFocus.bind(this)}><FontAwesomeIcon icon="fa-solid fa-house" /><span>Home</span></Link>
             {
                 TableInfoList.map((TableInfo) => 
-                    <Link to={`/${TableInfo.TableName}`} onClick={unFocus.bind(this)} about={TableInfo.TableName}><FontAwesomeIcon icon={TableInfo.TableIcon} /><span>{TableInfo.TableName}</span></Link>    
+                    // @ts-ignore
+                    <Link to={`/admin/${TableInfo.TableName}`} onClick={unFocus.bind(this)} about={TableInfo.TableName}><FontAwesomeIcon icon={TableInfo.TableIcon} /><span>{TableInfo.TableName}</span></Link>    
                 )
             }
         </div>

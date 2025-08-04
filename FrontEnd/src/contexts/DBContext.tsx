@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from 'react';
-import { DBService } from '../api/DBService';
+import { DBService } from '../api/DBService/DBService';
 
 const DBContext = createContext<DBService | null>(null);
 

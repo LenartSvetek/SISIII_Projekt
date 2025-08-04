@@ -6,8 +6,8 @@ import styles from './Index.module.scss'
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ITableInfo } from '../../api/IDBServiceProps';
-import { useDBService } from '../../contexts/DBContext';
+import { ITableInfo } from '../../../api/DBService/IDBServiceProps';
+import { useDBService } from '../../../contexts/DBContext';
 import { faSquarePollHorizontal } from '@fortawesome/free-solid-svg-icons';
 
 function Index() {
@@ -23,7 +23,7 @@ function Index() {
     }, [])
 
     let onClick = (ev : React.MouseEvent<HTMLButtonElement>) => {
-        DBService?.GetTableInfoList(ev.currentTarget.value).then(console.log).catch(console.error);
+        DBService?.GetTableData(ev.currentTarget.value).then(console.log).catch(console.error);
     }
 
     return (

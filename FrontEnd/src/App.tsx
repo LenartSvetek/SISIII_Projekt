@@ -6,7 +6,7 @@ import { useDBService } from './contexts/DBContext'
 
 
 
-import { ITableInfo } from './api/IDBServiceProps';
+import { ITableInfo } from './api/DBService/IDBServiceProps';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function App() {

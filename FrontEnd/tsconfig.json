@@ -3,6 +3,7 @@
     "jsx": "react",
     "baseUrl": ".",
     "esModuleInterop": true,
+    "lib": ["ES2015", "DOM"],
     "paths": {
       "@/*": ["src/*"]
     }

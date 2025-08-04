@@ -5,7 +5,7 @@ const { Table }=require('../../DB/dbConn')
 TableRoute.get('/:TableName', async (req, res, next) => {
     try{
        var queryResult = await Table.getTableData(req.params.TableName);
-       res.json(queryResult)
+       res.json(queryResult[0])
    }
    catch(err){
        console.log(err)
