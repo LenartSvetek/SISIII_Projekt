@@ -1,28 +1,27 @@
 const express= require("express")
 const UserRoute = express.Router();
+const { User } = require('../../DB/dbConn')
 
 UserRoute.post('/login', async (req, res) => {
+    
     var username = req.body.username;
     var password = req.body.password;
     if (username && password) {
         try {
-            let queryResult = await DB.AuthUser(username);
+            let queryResult = await User.AuthUser(username);
             
             if (queryResult.length > 0) {
-                if (password === queryResult[0].user_password) {
+                if (password == queryResult[0].Password) {
                     req.session.logged_in = true;
-                    res.json({ success: true, message: "LOGIN OK" });
-                    res.status(200)
+                    res.status(200).json({ success: true, message: "LOGIN OK" });
                 }
                 else {
                     console.log("INCORRECT PASSWORD");
-                    res.json({ success: false, message: "INCORRECT PASSWORD" });
-                    res.status(200)
+                    res.status(200).json({ success: false, message: "INCORRECT PASSWORD" });
                 }
             } else {
                 console.log("USER NOT REGISTRED");
-                res.json({ success: false, message: "USER NOT REGISTRED" });
-                res.status(200)
+                res.status(200).json({ success: false, message: "USER NOT REGISTRED" });
             }
         }
         catch (err) {
@@ -32,11 +31,15 @@ UserRoute.post('/login', async (req, res) => {
     }
     else {
         console.log("Please enter Username and Password!")
-        res.json({ success: false, message: "Please enter Username and Password!" });
-        res.status(204)
+        res.status(404).json({ success: false, message: "Please enter Username and Password!" });
     }
     res.end();
 });
+
+UserRoute.post("/logout", async (req, res) => {
+    req.session.logged_in = false;
+    res.status(200).json({success: true})
+})
 
 UserRoute.post('/auth', async (req, res) => {
     res.json({isAuth: req.session.logged_in == true});

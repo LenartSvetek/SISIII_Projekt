@@ -15,4 +15,12 @@ export class UserProfileService {
     async IsAuth(){
         return (await this.DBService.AuthUser()).isAuth;
     }
+
+    async Login(username : string, password : string) {
+        return (await this.DBService.LoginUser(username, password)).success;
+    }
+
+    async Logout(){
+        return (await this.DBService.Logout()).success;
+    }
 }

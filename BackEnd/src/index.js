@@ -16,12 +16,17 @@ app.use(session({
     secret: "a97b8737-8d27-49d3-a624-bcd6ba7db886",
     resave: true,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: { 
+        sameSite: "lax",
+        secure: false 
+    }
 }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
+    origin: 'http://localhost:4200',
+    credentials: true,
     methods: ["GET", "POST"],
 }))
 

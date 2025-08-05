@@ -67,9 +67,9 @@ let User = {
     AuthUser: async (username) => {
         const connection = await conn.getConnection();
         try {
-            let response = await connection.query('SELECT * FROM user_login WHERE user_name = ?', username);
+            let response = await connection.query('SELECT * FROM User WHERE Name = ?', username);
             await connection.release();
-            return response;
+            return response[0];
         } catch(error) {
             console.error(error);
         }
@@ -79,7 +79,7 @@ let User = {
     AddUser: async (username,email,password) => {
         const connection = await conn.getConnection();
         try {
-            let response = await connection.query(`INSERT INTO user_login (user_name,user_email,user_password) VALUES (?,?,?)`, [username, email, password]);
+            let response = await connection.query(`INSERT INTO user_login (user_name,user_email,user_password) VALUES (?,?,?)`, [username, email, password])[0];
             await connection.release();
             return response;
         } catch(error) {

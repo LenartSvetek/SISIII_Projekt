@@ -11,9 +11,18 @@
     transition: 0.2s all;
 
     .Header {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        padding: 10px 20px;
         grid-area: header;
         
         border-bottom: 1px solid black;
+
+        .logout{
+            border: none;
+            background: none;
+        }
     }
 
     .LeftPanel {

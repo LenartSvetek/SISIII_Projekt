@@ -1,6 +1,6 @@
 const express= require("express")
 const TableRoute = express.Router();
-const { Table }=require('../../DB/dbConn')
+const { Table } = require('../../DB/dbConn')
 
 TableRoute.get('/:TableName', async (req, res, next) => {
     try{

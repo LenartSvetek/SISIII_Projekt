@@ -29,7 +29,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                             <Route index element={<Index />}/>
                             <Route path=":TableName" element={<IndexDetails />}></Route>
                         </Route>
-                        <Route path='admin/login' element={<Login />}></Route>
+                        <Route path='admin/login' element={<Login />}>
+                        
+                        </Route>
                     </Routes>
                 </UserProfileProvider>
             </DBProvider>

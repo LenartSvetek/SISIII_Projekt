@@ -11,6 +11,7 @@ export class DBService {
         this.axios = Axios.create({
             baseURL: this.baseUrl,
             timeout: 1000,
+            withCredentials: true
         });
     }
 
@@ -33,6 +34,14 @@ export class DBService {
 
     public async AuthUser() {
         return (await (this.axios.post(`/api/User/auth`))).data;
+    }
+
+    public async LoginUser(username : string, password : string) {
+        return (await (this.axios.post(`/api/User/login`, {username, password}))).data;
+    }
+
+    public async Logout() {
+        return (await (this.axios.post(`/api/User/logout`))).data;
     }
 
     public static mysqlTypeToJsType(mysqlType) {
