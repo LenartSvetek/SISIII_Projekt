@@ -30,10 +30,6 @@ export default function AdminLayout() {
         }
     }
 
-    if(!auth){
-        return null;
-    }
-
     return (
         <div className={styles.Layout}>
             <div className={styles.Header}>

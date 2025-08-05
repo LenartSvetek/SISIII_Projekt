@@ -42,8 +42,9 @@ export default function IndexDetails() {
         </Toolbar>
 
         <DetailsList 
-        Columns={columns}
-        Data={data}
+            Columns={columns}
+            Data={data}
+            MultiSelect={true}
         ></DetailsList>
     </div>
     );

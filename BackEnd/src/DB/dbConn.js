@@ -39,7 +39,7 @@ let TableInfo = {
     getTableColumns: async (TableName) => {
         const connection = await conn.getConnection();
         try{
-            let response = await connection.query(`SELECT TC.* FROM TableInfo TI INNER JOIN TableColumns TC ON TC.TableInfoId = TI.TabInfoId WHERE TI.TableName LIKE "${TableName}"`);
+            let response = await connection.query(`SELECT TC.* FROM TableInfo TI INNER JOIN TableColumns TC ON TC.TableInfoId = TI.Id WHERE TI.TableName LIKE "${TableName}"`);
             await connection.release();
             return response;
         } catch(error) {

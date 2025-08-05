@@ -84,4 +84,24 @@ $resizeBarWidth: 5px;
             background-color: rgba(0,0,0, 0.1);
         }
     }
+
+    .header {
+        .checkboxCont {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 64px;
+        }
+    }
+
+    .content {
+        .checkboxCont {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 64px;
+        }
+    }
 }

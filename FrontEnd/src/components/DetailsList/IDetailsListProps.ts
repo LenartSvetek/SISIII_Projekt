@@ -1,7 +1,15 @@
-export interface IDetailsListProps {
+export interface IDetailsListProps extends IDetailListConfig{
     Columns : IColumn[];
     Data :  any[];
 }
+
+export interface IDetailListConfig {
+    MultiSelect ?: boolean;
+}
+
+export const DefaultDetailListConfig : IDetailListConfig = {
+    MultiSelect: false
+};
 
 export interface IColumn extends IColumnConfig {
     FieldName : string;
@@ -21,7 +29,7 @@ export interface IColumnDefConfig extends IColumnConfig {
     FinalMinWidth : number;
 }
 
-export const config : IColumnDefConfig = {
+export const DefaultColumnConfig : IColumnDefConfig = {
     Width : 140,
     IsResizable: true,
     FinalMinWidth : 100
