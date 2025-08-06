@@ -16,6 +16,11 @@ TableInfoRoute.get('/', async (req, res, next) => {
 TableInfoRoute.get('/columns/:TableName', async (req, res, next) => {
     try {
         var queryResult = await TableInfo.getTableColumns(req.params.TableName);
+        for(let item of queryResult[0]) {
+            item.IsForeignKey = item.IsForeignKey[0] == 1;
+            item.IsNullable = item.IsNullable[0] == 1;
+            item.IsPrimaryKey =  item.IsPrimaryKey[0] == 1;
+        }
         res.json(queryResult[0])
     }
     catch (err) {

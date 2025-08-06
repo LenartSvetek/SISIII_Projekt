@@ -10,6 +10,8 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@fluentui/react-components": "^9.68.2",
+        "@fluentui/react-datepicker-compat": "^0.6.11",
         "@fortawesome/fontawesome-free": "^6.7.2",
         "@fortawesome/fontawesome-svg-core": "^6.7.2",
         "@fortawesome/free-brands-svg-icons": "^6.7.2",

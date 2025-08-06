@@ -28,8 +28,8 @@ export class DBService {
         return (await (this.axios.get(`/api/TableInfo/columns/${TableName}`))).data;
     }
 
-    public async GetTableData(TableName: string) {
-        return (await (this.axios.get(`/api/Table/${TableName}`))).data;
+    public async GetTableData(TableName: string, Select: string[] = ['*']) {
+        return (await (this.axios.get(`/api/Table/${TableName}?select=${Select.map(encodeURIComponent).join(",")}`))).data;
     }
 
     public async AuthUser() {

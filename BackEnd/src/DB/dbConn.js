@@ -50,10 +50,10 @@ let TableInfo = {
 }
 
 let Table = {
-    getTableData: async (TableName) => {
+    getTableData: async (TableName, select = ["*"]) => {
         const connection = await conn.getConnection();
         try{
-            let response = connection.query(`SELECT * FROM ${connection.escapeId(TableName)}`);
+            let response = connection.query(`SELECT ${select.map((sel) => connection.escapeId(sel)).join(", ")} FROM ${connection.escapeId(TableName)}`);
             await connection.release();
             return response;
         } catch(error) {
