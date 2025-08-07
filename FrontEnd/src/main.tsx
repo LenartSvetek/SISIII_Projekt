@@ -29,14 +29,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     <UserProfileProvider>
                         <Routes>
                             <Route path="/admin" element={<AdminLayout />}>
-                                <Route index element={<Index />}/>
+                                <Route index element={<Index />} />
                                 <Route path=":TableName" element={<IndexDetails />}></Route>
                                 <Route path=":TableName/:Operation" element={<CreateItem />}></Route>
                                 <Route path=":TableName/:Operation/:Id" element={<CreateItem />}></Route>
                             </Route>
-                            <Route path='admin/login' element={<Login />}>
-                            
-                            </Route>
+                            <Route path='admin/login' element={<Login />} />
                         </Routes>
                     </UserProfileProvider>
                 </DBProvider>

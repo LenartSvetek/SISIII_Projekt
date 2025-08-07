@@ -91,7 +91,9 @@ $resizeBarWidth: 5px;
             justify-content: center;
             align-items: center;
 
-            width: 64px;
+            width: 40px;
+            min-width: 40px;
+            max-width: 40px;
         }
     }
 
@@ -101,7 +103,10 @@ $resizeBarWidth: 5px;
             justify-content: center;
             align-items: center;
 
-            width: 64px;
+            width: 40px;
+            min-width: 40px;
+            max-width: 40px;
+
         }
     }
 }

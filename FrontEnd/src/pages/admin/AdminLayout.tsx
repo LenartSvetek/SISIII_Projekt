@@ -7,16 +7,15 @@ import { useUPS } from "@/contexts/UserProfileContext";
 import { faSquarePollHorizontal } from "@fortawesome/free-solid-svg-icons";
 
 export default function AdminLayout() {
-    const [auth, setAuth] = useState<boolean>(false);
-
     let location = useLocation();
     let navigate = useNavigate();
     let profileService = useUPS();
 
+    let [count, setCount] = useState<number>(0);
+
     useEffect(() => {
         const checkAuth = async () => {
             if (!await profileService.IsAuth() && location.pathname !== "/admin/login") {
-                setAuth(true);
                 navigate(`/admin/login?from=${encodeURIComponent(location.pathname)}`);
             }
         };
@@ -39,9 +38,7 @@ export default function AdminLayout() {
                 <LeftPanel />
             </div>
             <div className={styles.Content}>
-                <div className={styles.float}>
-                    <Outlet />
-                </div>
+                <Outlet />
             </div>
         </div>
     );

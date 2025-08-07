@@ -40,16 +40,13 @@ export default function DetailsList(props : IDetailsListProps){
     let onColResize = (ev : MouseEvent, btn : HTMLButtonElement) => {
         let index = 0;
         for(let col of listColumns) {
-            console.log(btn.value, col.FieldName);
             if(btn.value == col.FieldName) break;
             index++;
         }
-        console.log(btn.parentElement.getBoundingClientRect().left, ev.layerX)
 
         let width = ev.pageX - btn.parentElement.getBoundingClientRect().left;
         
         width = width > DefaultColumnConfig.FinalMinWidth? width : DefaultColumnConfig.FinalMinWidth;
-        console.log(width)
 
         let newList = [...listColumns];
 

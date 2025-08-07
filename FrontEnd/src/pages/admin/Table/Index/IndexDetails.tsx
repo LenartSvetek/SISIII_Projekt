@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 
 import styles from "./IndexDetails.module.scss";
 import Toolbar from "@/components/Toolbar/Toolbar";
@@ -10,6 +10,8 @@ import { useDBService } from "@/contexts/DBContext";
 import { IColumn } from "@/components/DetailsList/IDetailsListProps";
 
 export default function IndexDetails() {
+    let location = useLocation();
+    let navigate = useNavigate();
     let { TableName } = useParams();
     
     const DBService = useDBService();
@@ -31,11 +33,15 @@ export default function IndexDetails() {
         DBService.GetTableData(TableName).then(setData);
     }, [TableName]);
 
+    const newItem = () => {
+        navigate(location.pathname + "/Create")
+    }
+
     return ( 
     <div className={styles.IndexDetail}>
         <h1>{TableName}</h1>
         <Toolbar>
-            <TBButton>Hello</TBButton>
+            <TBButton onClick={newItem}>New item</TBButton>
             <TBButton>World</TBButton>
             <Seperator></Seperator>
             <TBButton>Yeaa</TBButton>

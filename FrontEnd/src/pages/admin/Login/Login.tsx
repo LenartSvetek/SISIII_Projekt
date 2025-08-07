@@ -24,7 +24,10 @@ export default function Login(props) {
         if(username != "" && password != ""){
             let response = await UserService.Login(username, password);
             if(response) {
-                navigate(searchParams.get("from"));
+                if(searchParams.get("from"))
+                    navigate(searchParams.get("from"));
+                else
+                    navigate("/admin");
             }
         }
     }

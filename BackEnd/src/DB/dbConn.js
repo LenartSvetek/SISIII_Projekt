@@ -49,11 +49,33 @@ let TableInfo = {
     }
 }
 
+const cleanSelect = (sel, connect) => {
+    sel = sel.trim();
+    return sel == "*"? sel : connect.escapeId(sel);
+};
+
+const constructValues = (values, connection) => {
+    return `(${values.map((val) => connection.escape(val)).join(",")})`
+}
+
 let Table = {
     getTableData: async (TableName, select = ["*"]) => {
         const connection = await conn.getConnection();
         try{
-            let response = connection.query(`SELECT ${select.map((sel) => connection.escapeId(sel)).join(", ")} FROM ${connection.escapeId(TableName)}`);
+            let response = await connection.query(`SELECT ${select.map((sel) => cleanSelect(sel, connection)).join(", ")} FROM ${connection.escapeId(TableName)}`);
+            await connection.release();
+            return response;
+        } catch(error) {
+            console.error(error);
+        }
+        await connection.release();
+    },
+    addTableItem: async (TableName, select, valuesList) => {
+        const connection = await conn.getConnection();
+
+        try{
+            let response = await connection.query(`INSERT INTO ${connection.escapeId(TableName)}(${select.map((sel) => cleanSelect(sel, connection)).join(", ")}) VALUES ${valuesList.map((values) => constructValues(values, connection)).join(",")}`);
+
             await connection.release();
             return response;
         } catch(error) {
@@ -67,7 +89,7 @@ let User = {
     AuthUser: async (username) => {
         const connection = await conn.getConnection();
         try {
-            let response = await connection.query('SELECT * FROM User WHERE Name = ?', username);
+            let response = await connection.query('SELECT * FROM UserInfo WHERE Name = ?', username);
             await connection.release();
             return response[0];
         } catch(error) {
@@ -79,7 +101,7 @@ let User = {
     AddUser: async (username,email,password) => {
         const connection = await conn.getConnection();
         try {
-            let response = await connection.query(`INSERT INTO user_login (user_name,user_email,user_password) VALUES (?,?,?)`, [username, email, password])[0];
+            let response = await connection.query(`INSERT INTO UserInfo (user_name,user_email,user_password) VALUES (?,?,?)`, [username, email, password])[0];
             await connection.release();
             return response;
         } catch(error) {

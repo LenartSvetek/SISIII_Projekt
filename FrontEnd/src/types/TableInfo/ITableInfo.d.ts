@@ -2,8 +2,8 @@ export interface ITableInfoColumn {
     TableInfoId: string;
     CheckConstraint: any;
     ColumnName: string;
-    DataType: "STRING" | "LOOKUP" | "DATE" | "ENUM" | (string & {});
-    Choices: string[];
+    DataType: "STRING" | "LOOKUP" | "DATE" | "ENUM" | "BOOL" | (string & {});
+    Choices: string;
     DefaultValue: string;
     Id: string;
     IsForeignKey: boolean;
