@@ -15,4 +15,11 @@
     &:active{
         background-color: rgba(0,0,0, 0.15);
     }
+
+    &:disabled {
+        color: gray;
+        &:hover{
+            background: none;
+        }
+    }
 }

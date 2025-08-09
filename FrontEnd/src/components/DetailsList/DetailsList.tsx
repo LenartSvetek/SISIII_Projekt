@@ -61,18 +61,24 @@ export default function DetailsList(props : IDetailsListProps){
         let tmpSel = new Set(selected);
 
         if(value != "*"){
-            if(checked) tmpSel.add(value);
-            else tmpSel.delete(value);
+            if(props.MultiSelect) {
+                if(checked) tmpSel.add(value);
+                else tmpSel.delete(value);
+            }
+            else {
+                tmpSel = new Set(value)
+            }
         }
         else {
             if(checked) {
                 for(let item of data) {
-                    console.log(item)
                     tmpSel.add(item.Id);
                 }
             }
             else tmpSel = new Set();
         }
+
+        if(props.onSelectItem) props.onSelectItem(tmpSel);
 
         setSelected(tmpSel);
     }

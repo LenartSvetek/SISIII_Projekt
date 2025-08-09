@@ -70,11 +70,36 @@ let Table = {
         }
         await connection.release();
     },
+
+    getTableDataById: async (TableName, select = ["*"], Id) => {
+        const connection = await conn.getConnection();
+        try{
+            let response = await connection.query(`SELECT ${select.map((sel) => cleanSelect(sel, connection)).join(", ")} FROM ${connection.escapeId(TableName)} WHERE Id = ${connection.escape(Id)}`);
+            await connection.release();
+            return response;
+        } catch(error) {
+            console.error(error);
+        }
+        await connection.release();
+    },
+
     addTableItem: async (TableName, select, valuesList) => {
         const connection = await conn.getConnection();
-
         try{
             let response = await connection.query(`INSERT INTO ${connection.escapeId(TableName)}(${select.map((sel) => cleanSelect(sel, connection)).join(", ")}) VALUES ${valuesList.map((values) => constructValues(values, connection)).join(",")}`);
+
+            await connection.release();
+            return response;
+        } catch(error) {
+            console.error(error);
+        }
+        await connection.release();
+    },
+
+    updateTableItem: async (TableName, select, values, id) => {
+        const connection = await conn.getConnection();
+        try{
+            let response = await connection.query(`UPDATE ${connection.escapeId(TableName)} SET ${select.map((sel, ind) => `${cleanSelect(sel, connection)}=${connection.escape(values[ind])}`).join(",")} WHERE Id = ${connection.escape(id)}`);
 
             await connection.release();
             return response;

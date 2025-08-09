@@ -1,6 +1,7 @@
 export interface IDetailsListProps extends IDetailListConfig{
     Columns : IColumn[];
     Data :  any[];
+    onSelectItem ?: (selected: Set<any>) => void;
 }
 
 export interface IDetailListConfig {

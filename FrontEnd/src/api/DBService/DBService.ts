@@ -32,11 +32,22 @@ export class DBService {
         return (await (this.axios.get(`/api/Table/${TableName}?select=${Select.map(encodeURIComponent).join(",")}`))).data;
     }
 
+    public async GetTableDataById(TableName: string, Select: string[] = ['*'], Id = "-1") {
+        return (await (this.axios.get(`/api/Table/getById/${TableName}?select=${Select.map(encodeURIComponent).join(",")}&id=${Id}`))).data[0];
+    }
+
     public async CreateTableItem(TableName: string, Select: string[], ValuesList: string[][]){
-        console.log(Select, ValuesList)
         return (await this.axios.post(`/api/Table/${TableName}`, {
             select: Select,
             valuesList: ValuesList
+        })).data.affectedRows > 0;
+    }
+
+    public async UpdateTableItem(TableName: string, Select: string[], ValuesList: string[], Id: string){
+        return (await this.axios.post(`/api/Table/${TableName}`, {
+            select: Select,
+            valuesList: ValuesList,
+            id: Id
         })).data.affectedRows > 0;
     }
 

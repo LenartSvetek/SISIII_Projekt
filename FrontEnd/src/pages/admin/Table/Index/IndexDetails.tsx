@@ -18,6 +18,7 @@ export default function IndexDetails() {
     let [ columns, setColumns ] = useState<IColumn[]>([]);
     let [ data, setData ] = useState<any[]>([]);
 
+    let [ selected, setSelected] = useState<Set<any>>(new Set());
 
     useEffect(() => {
         DBService.GetTableColumns(TableName).then((TableInfo) => {
@@ -33,8 +34,24 @@ export default function IndexDetails() {
         DBService.GetTableData(TableName).then(setData);
     }, [TableName]);
 
+    useEffect(() => {
+        console.log(selected)
+    }, [selected]);
+
     const newItem = () => {
         navigate(location.pathname + "/Create")
+    }
+
+    const viewItem = () => {
+        if(selected.size == 1)
+            selected.forEach((sel) => navigate(location.pathname + `/View/${sel}`))
+        
+    }
+
+    const editItem = () => {
+        if(selected.size == 1)
+            selected.forEach((sel) => navigate(location.pathname + `/Modify/${sel}`))
+        
     }
 
     return ( 
@@ -42,15 +59,16 @@ export default function IndexDetails() {
         <h1>{TableName}</h1>
         <Toolbar>
             <TBButton onClick={newItem}>New item</TBButton>
-            <TBButton>World</TBButton>
-            <Seperator></Seperator>
-            <TBButton>Yeaa</TBButton>
+            <TBButton disabled={selected.size != 1} onClick={viewItem}>View item</TBButton>
+            <TBButton disabled={selected.size != 1} onClick={editItem}>Edit item</TBButton>
         </Toolbar>
 
         <DetailsList 
             Columns={columns}
             Data={data}
             MultiSelect={true}
+
+            onSelectItem={setSelected}
         ></DetailsList>
     </div>
     );
