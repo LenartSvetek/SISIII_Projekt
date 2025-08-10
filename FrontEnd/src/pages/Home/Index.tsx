@@ -18,6 +18,7 @@ function Index() {
     let [ startDate, setStartDate ] = useState<Date>(null);
     let [ endDate, setEndDate ] = useState<Date>(null);
     let [ reservedSpots, setReservedSpots ] = useState<Set<string>>(new Set());
+    let [ data, setData] = useState({});
 
     useEffect(() => {
         const getSpots = async () => {
@@ -42,11 +43,41 @@ function Index() {
             setSelectedSpot(spotId);
     }
 
-    const handleSubmit = (ev : React.FormEvent) => {
+    const handleSubmit = async (ev : React.FormEvent) => {
         ev.preventDefault();
 
-        console.log("YOOO");
+        if(!startDate || !endDate || spotSelected.trim() == "") return;
+        let user = (await dbService.GetTableData("UserInfo", ["Id"], `Email = '${data["Email"]}'`));
+        let userId = "";
+        if(user.length > 0) {
+            userId = user[0]["Id"];
+        }
+        else {
+            await dbService.CreateTableItem("UserInfo", ["Name", "Email", "Temporary"], [[data["FullName"], data["Email"], 1]]);
+            user = (await dbService.GetTableData("UserInfo", ["Id"], `Email = '${data["Email"]}'`));
+            userId = user[0]["Id"];
+        }
+        
+        let startISO = startDate.toISOString().replace('T', ' ').replace('Z', '').split('.')[0];
+        let endISO = endDate.toISOString().replace('T', ' ').replace('Z', '').split('.')[0];
+        await dbService.CreateTableItem("Reservation", 
+            ["UserID", "SpotID", "StartDate", "EndDate", "LicencePlate"], 
+            [[userId, spotSelected, startISO, endISO, data["Code"] + data["Licence"]]]
+        );
+
+        let filter = `StartDate > '${startISO}' and EndDate < '${endISO}'`;
+        setReservedSpots(new Set((await dbService.GetTableData("Reservation", ["SpotId"], filter)).map((item) => item.SpotId)));
     };
+
+    const setValue = (ev : React.ChangeEvent) => {
+        let input = ev.currentTarget as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+        
+        setData(prev => ({
+            ...prev,
+            // @ts-ignore
+            [input.name]: input.type && input.type == "checkbox"? input.checked : input.value
+        }));
+    }
 
     return (
         <div className={styles.home}>
@@ -69,24 +100,24 @@ function Index() {
                         <div className={styles['form-group']}>
                             <div className={styles['form-md-6']}>
                                 <Field required label={"Ime in priimek"}>
-                                    <Input></Input>
+                                    <Input name="FullName" value={data["FullName"]} onChange={setValue}></Input>
                                 </Field>
                             </div>
                             <div className={styles['form-md-6']}>
                                 <Field required label={"Email"}>
-                                    <Input></Input>
+                                    <Input name="Email" value={data["Email"]} onChange={setValue}></Input>
                                 </Field>
                             </div>
                         </div>
                         <div className={styles['form-group']}>
                             <div className={styles['form-md-3']}>
                                 <Field required label={"Country code"}>
-                                    <Input></Input>
+                                    <Input name="Code" value={data["Code"]} onChange={setValue}></Input>
                                 </Field>
                             </div>
                             <div className={styles['form-md-9']}>
                                 <Field required label={"Registration table"}>
-                                    <Input style={{width: "100%"}}></Input>
+                                    <Input name="Licence" value={data["Licence"]} onChange={setValue}></Input>
                                 </Field>
                             </div>
                         </div>
