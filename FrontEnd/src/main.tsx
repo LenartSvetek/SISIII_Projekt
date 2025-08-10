@@ -14,7 +14,9 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 import AdminRouter from './pages/admin/AdminRouter';
+import Reserve from './pages/Reserve/Reserve';
 import Index from './pages/Home/Index';
+import View from './pages/View/View';
 
 library.add(fas, far, fab);
 
@@ -27,6 +29,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                         <Routes>
                             <Route path="/admin/*" element={<AdminRouter></AdminRouter>}></Route>
                             <Route index element={<Index></Index>}></Route>
+                            <Route path='/Reserve' element={<Reserve></Reserve>}></Route>
+                            <Route path='/View' element={<View></View>}></Route>
                         </Routes>
                     </UserProfileProvider>
                 </DBProvider>

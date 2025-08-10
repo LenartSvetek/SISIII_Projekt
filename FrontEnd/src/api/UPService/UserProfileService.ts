@@ -8,6 +8,9 @@ export class UserProfileService {
 
     private profile : IProfile;
 
+    public Email : string;
+    public Code : string;
+
     constructor(props) {
         this.DBService = useDBService();
     }

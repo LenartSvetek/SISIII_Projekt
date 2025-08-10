@@ -1,0 +1,159 @@
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100dvh;
+
+
+    .float {
+        display: flex;
+        gap: 25px;
+        padding: 20px;
+        background: white;
+        border-radius: 11px;
+        filter: drop-shadow(0px 0px 14px rgba(0, 0, 0, 0.2));
+        
+        @media screen and (max-width: 840px), screen and (max-device-width: 450px) and (max-device-height: 950px) {
+            flex-direction: column;
+            max-width: 390px;
+        }
+
+        > div {
+            max-height: 350px;
+        }
+
+        .map {
+            background-color: black;
+            border-radius: 10px;
+
+            .spot {
+                cursor: pointer;
+
+                fill: rgba(255, 255, 255, 0.5);
+                stroke: whitesmoke;
+                stroke-width: 3px;
+
+                &.selected {
+                    fill: whitesmoke;
+                    stroke: rgba(255, 255, 255, 0.5);
+                }
+
+                &.taken {
+                    cursor: not-allowed;
+                    fill: red;
+                }
+            }
+
+            .spotText {
+                cursor: pointer;
+            }
+        }
+
+        .reserve {
+            min-width: 250px;
+            max-width: 450px;
+
+            h1 {
+                text-align: center;
+            }
+
+            form {
+                margin-top: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                height: 100%;
+                max-height: 320px;
+
+                input {
+                    width: 100%;
+                }
+
+                .form-group {
+                    $gap: 10px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: $gap;
+
+                    .form-md-3 {
+                        min-width: 100px;
+                        max-width: calc(25% - (#{$gap} / 4));
+                    }
+
+                    .form-md-6 {
+                        width: calc(50% - (#{$gap} / 2));
+                    }
+
+                    .form-md-9 {
+                        width: calc(75% - (#{$gap}));
+                    }
+
+                    .form-md-12 {
+                        width: 100%;
+                    }
+                }
+
+                .status {
+                    margin-top: auto;
+                    
+                    .statusBox{
+                        display: flex;
+                        padding: 7px;
+                        border-radius: 10px;
+                        align-items: center;
+                        gap: 20px;
+                        font-size: 17px;
+                        
+                        &.Warning {
+                            border: 2px solid red;
+                            color: red;
+                            .status-icon {
+                                border: 2px solid red;
+                            }
+                        }
+
+                        &.Informative {
+                            border: 2px solid darkblue;
+                            color: darkblue;
+                            .status-icon {
+                                border: 2px solid darkblue;
+                            }
+                        }
+
+                        .status-icon {
+                            width: auto;
+                            display: flex;
+                            width: 48px;
+                            min-width: 48px;
+                            height: 48px;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: 100%;
+                        }
+                    }
+                }
+
+                button[type="submit"]{
+
+                    
+                    border: none;
+                    width: 100%;
+                    background: linear-gradient(45deg, lightblue, blue, darkblue);
+                    background-size: 200% 100%;
+                    &:hover {
+                        background-position-x: 100%;
+                    }
+
+                    color: whitesmoke;
+                    
+                    padding: 7px 10px;
+                    border-radius: 5px;
+
+                    transition: 1s background-position;
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+}
