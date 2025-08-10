@@ -59,10 +59,10 @@ const constructValues = (values, connection) => {
 }
 
 let Table = {
-    getTableData: async (TableName, select = ["*"]) => {
+    getTableData: async (TableName, select = ["*"], filter = "") => {
         const connection = await conn.getConnection();
         try{
-            let response = await connection.query(`SELECT ${select.map((sel) => cleanSelect(sel, connection)).join(", ")} FROM ${connection.escapeId(TableName)}`);
+            let response = await connection.query(`SELECT ${select.map((sel) => cleanSelect(sel, connection)).join(", ")} FROM ${connection.escapeId(TableName)} ${filter != ""? `WHERE ${filter}` : ""}`);
             await connection.release();
             return response;
         } catch(error) {

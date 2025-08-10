@@ -28,8 +28,9 @@ export class DBService {
         return (await (this.axios.get(`/api/TableInfo/columns/${TableName}`))).data;
     }
 
-    public async GetTableData(TableName: string, Select: string[] = ['*']) {
-        return (await (this.axios.get(`/api/Table/${TableName}?select=${Select.map(encodeURIComponent).join(",")}`))).data;
+    public async GetTableData(TableName: string, Select: string[] = ['*'], filter = "")
+    {
+        return (await (this.axios.get(`/api/Table/${TableName}?select=${Select.map(encodeURIComponent).join(",")}&filter=${filter}`))).data;
     }
 
     public async GetTableDataById(TableName: string, Select: string[] = ['*'], Id = "-1") {

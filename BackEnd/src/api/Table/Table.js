@@ -4,7 +4,7 @@ const { Table } = require('../../DB/dbConn')
 
 TableRoute.get('/:TableName', async (req, res, next) => {
     try {
-        var queryResult = await Table.getTableData(req.params.TableName, req.query.select.split(','));
+        var queryResult = await Table.getTableData(req.params.TableName, req.query.select.split(','), req.query.filter);
         res.json(queryResult[0])
     }
     catch (err) {
