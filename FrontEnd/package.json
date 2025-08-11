@@ -9,6 +9,7 @@
         "build": "vite build",
         "preview": "vite preview"
     },
+    "homepage": "~89231394",
     "dependencies": {
         "@fluentui/react-components": "^9.68.2",
         "@fluentui/react-datepicker-compat": "^0.6.11",

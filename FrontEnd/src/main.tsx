@@ -13,16 +13,17 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { FluentProvider, webLightTheme } from '@fluentui/react-components';
-import AdminRouter from './pages/admin/AdminRouter';
 import Reserve from './pages/Reserve/Reserve';
 import Index from './pages/Home/Index';
 import View from './pages/View/View';
+import AdminRouter from './pages/admin/AdminRouter';
 
 library.add(fas, far, fab);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename='/~89231394'>
+        {/* <BrowserRouter> */}
             <FluentProvider theme={webLightTheme}>
                 <DBProvider>
                     <UserProfileProvider>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // @ts-ignore
 import reactLogo from '@/assets/react.svg';
 
-import styles from './Index.module.scss'
+import styles from './IndexAdmin.module.scss'
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,7 +11,7 @@ import { useDBService } from '../../../../contexts/DBContext';
 import { faSquarePollHorizontal } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router';
 
-function Index() {
+function IndexAdmin() {
     const DBService = useDBService();
     
     const [count, setCount] = useState(0);
@@ -20,6 +20,7 @@ function Index() {
     const navigate = useNavigate();
 
     useEffect(() =>{
+        console.log("ampaj k")
         DBService?.GetTableInfoList().then((TableInfos) => {
             setTableInfoList(TableInfos);
         }).catch(console.error);
@@ -45,4 +46,4 @@ function Index() {
     )
 }
 
-export default Index;
+export default IndexAdmin;
