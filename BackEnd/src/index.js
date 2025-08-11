@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
     origin: 'http://localhost:4200',
     credentials: true,
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "DELETE"],
 }))
 
 const TableInfo = require("./api/TableInfo/TableInfo.js")

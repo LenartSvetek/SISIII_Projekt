@@ -34,9 +34,7 @@ export default function IndexDetails() {
         DBService.GetTableData(TableName).then(setData);
     }, [TableName]);
 
-    useEffect(() => {
-        console.log(selected)
-    }, [selected]);
+    
 
     const newItem = () => {
         navigate(location.pathname + "/Create")
@@ -54,6 +52,14 @@ export default function IndexDetails() {
         
     }
 
+    const deleteItem = async () => {
+        if(selected.size > 0) {
+            await DBService.DeleteTableItems(TableName, Array.from(selected));
+            setSelected(new Set());
+            DBService.GetTableData(TableName).then(setData);
+        }
+    }
+
     return ( 
     <div className={styles.IndexDetail}>
         <h1>{TableName}</h1>
@@ -61,6 +67,7 @@ export default function IndexDetails() {
             <TBButton onClick={newItem}>New item</TBButton>
             <TBButton disabled={selected.size != 1} onClick={viewItem}>View item</TBButton>
             <TBButton disabled={selected.size != 1} onClick={editItem}>Edit item</TBButton>
+            <TBButton disabled={selected.size == 0} onClick={deleteItem}>Delete item/s</TBButton>
         </Toolbar>
 
         <DetailsList 

@@ -16,9 +16,7 @@ export default function Login(props) {
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
-    useEffect(() => {
-        searchParams.forEach(console.log);
-    }, [searchParams])
+    
 
     const login = async () => {
         if(username != "" && password != ""){

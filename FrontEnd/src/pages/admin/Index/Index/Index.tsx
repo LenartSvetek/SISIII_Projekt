@@ -9,12 +9,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ITableInfo } from '../../../../api/DBService/IDBServiceProps';
 import { useDBService } from '../../../../contexts/DBContext';
 import { faSquarePollHorizontal } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router';
 
 function Index() {
     const DBService = useDBService();
     
     const [count, setCount] = useState(0);
     const [TableInfoList, setTableInfoList] = useState<ITableInfo[]>([])
+
+    const navigate = useNavigate();
 
     useEffect(() =>{
         DBService?.GetTableInfoList().then((TableInfos) => {
@@ -23,20 +26,11 @@ function Index() {
     }, [])
 
     let onClick = (ev : React.MouseEvent<HTMLButtonElement>) => {
-        DBService?.GetTableData(ev.currentTarget.value).then(console.log).catch(console.error);
+        navigate(`/admin/${ev.currentTarget.value}`);
     }
 
     return (
         <div className={styles.App}>
-            <div>
-                <a href="https://vitejs.dev" target="_blank">
-                    <img src="/vite.svg" className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://reactjs.org" target="_blank">
-                    <img src={reactLogo} className="logo react" alt="React logo" />
-                </a>
-            </div>
-            <h1>Vite + React</h1>
             <div className={styles.KrNeki}>
                 {
                     TableInfoList.map((TableInfo, index) => 
@@ -47,9 +41,6 @@ function Index() {
                     )
                 }
             </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
         </div>
     )
 }

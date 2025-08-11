@@ -107,6 +107,19 @@ let Table = {
             console.error(error);
         }
         await connection.release();
+    },
+
+    deleteTableItems: async (TableName, ItemIds) => {
+        const connection = await conn.getConnection();
+        try{
+            let response = await connection.query(`DELETE FROM ${connection.escapeId(TableName)} WHERE Id IN (${ItemIds.map((item) => connection.escape(item.trim())).join(",")})`);
+
+            await connection.release();
+            return response;
+        } catch(error) {
+            console.error(error);
+        }
+        await connection.release();
     }
 }
 

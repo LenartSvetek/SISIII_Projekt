@@ -18,7 +18,6 @@ export class DBService {
     public async GetTableInfoList() {
         return await this.axios.get("/api/TableInfo")
             .then(TableInfos => {
-                console.log(TableInfos);
                 return TableInfos.data
             })
             .catch(() => []);
@@ -49,6 +48,14 @@ export class DBService {
             select: Select,
             valuesList: ValuesList,
             id: Id
+        })).data.affectedRows > 0;
+    }
+
+    public async DeleteTableItems(TableName: string, ItemIds: string[]){
+        return (await this.axios.delete(`/api/Table/${TableName}`, {
+            data: {
+                itemIds: ItemIds
+            }
         })).data.affectedRows > 0;
     }
 

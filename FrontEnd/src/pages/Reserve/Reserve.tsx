@@ -37,9 +37,6 @@ function Reserve() {
         getSpots();
     }, [startDate, endDate]);
 
-    useEffect(() => {
-        console.log("Reserved spots: ", reservedSpots);
-    }, [reservedSpots]);
 
     const onSpotSelect = (spotId) => {
         if(!reservedSpots.has(spotId))
@@ -74,7 +71,7 @@ function Reserve() {
             userId = user[0]["Id"];
         }
         
-        if((await dbService.GetTableData("Reservation", ["Id"], `EndDate > '${new Date()}' and UserId = '${userId}'`)).length > 3) {
+        if((await dbService.GetTableData("Reservation", ["Id"], `EndDate > '${new Date()}' and UserId = '${userId}'`)).length >= 3) {
             setStatusMessage("Na enkrat so veljavne lahko le 3 reservacije naenkrat!");
             setStatus("Warning");
             return;

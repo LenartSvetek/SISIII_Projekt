@@ -26,13 +26,25 @@ TableRoute.get('/getById/:TableName', async (req, res, next) => {
 
 TableRoute.post('/:TableName', async (req, res, next) => {
     let { select, valuesList, id } = req.body;
-    console.log(select, valuesList)
 
     try {
         if(id == undefined)
             var queryResult = await Table.addTableItem(req.params.TableName, select, valuesList);
         else 
             var queryResult = await Table.updateTableItem(req.params.TableName, select, valuesList, id);
+        res.json(queryResult[0])
+    }
+    catch (err) {
+        console.log(err)
+        res.sendStatus(500)
+    }
+})
+
+TableRoute.delete("/:TableName", async (req, res, next) => {
+    let { itemIds } = req.body;
+    
+    try {
+        var queryResult = await Table.deleteTableItems(req.params.TableName, itemIds);
         res.json(queryResult[0])
     }
     catch (err) {

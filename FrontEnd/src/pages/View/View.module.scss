@@ -1,0 +1,18 @@
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100dvh;
+
+
+    .float {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        padding: 20px;
+        background: white;
+        border-radius: 11px;
+        filter: drop-shadow(0px 0px 14px rgba(0, 0, 0, 0.2));
+    }
+}
