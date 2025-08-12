@@ -13,8 +13,9 @@ export default function AdminRouter() {
             <Route element={<AdminLayout />}>
                 <Route index element={<Index />} />
                 <Route path=":TableName" element={<IndexDetails />}></Route>
-                <Route path=":TableName/:Operation" element={<CreateItem />}></Route>
-                <Route path=":TableName/:Operation/:Id" element={<CreateItem />}></Route>
+                <Route path="View" element={<CreateItem />}></Route>
+                <Route path="Modify" element={<CreateItem />}></Route>
+                <Route path="Create" element={<CreateItem />}></Route>
             </Route>
         </Routes>
     )

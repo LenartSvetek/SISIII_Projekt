@@ -37,18 +37,18 @@ export default function IndexDetails() {
     
 
     const newItem = () => {
-        navigate(location.pathname + "/Create")
+        navigate(`/admin/Create?TableName=${encodeURIComponent(TableName)}`)
     }
 
     const viewItem = () => {
         if(selected.size == 1)
-            selected.forEach((sel) => navigate(location.pathname + `/View/${sel}`))
+            selected.forEach((sel) => navigate(`/admin/View?TableName=${encodeURIComponent(TableName)}&Id=${encodeURIComponent(sel)}`));
         
     }
 
     const editItem = () => {
         if(selected.size == 1)
-            selected.forEach((sel) => navigate(location.pathname + `/Modify/${sel}`))
+            selected.forEach((sel) => navigate(`/admin/Modify?TableName=${encodeURIComponent(TableName)}&Id=${encodeURIComponent(sel)}`))
         
     }
 

@@ -3,6 +3,7 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
+    "homepage": "~89231394",
     "scripts": {
         "dev": "concurrently \"npx typed-css-modules -p \\\"src/pages/**/*.module.scss\\\" --watch\" \"npx typed-css-modules -p \\\"src/components/**/*.module.scss\\\" --watch\" \"vite --host\"",
         "prod": "vite --host",

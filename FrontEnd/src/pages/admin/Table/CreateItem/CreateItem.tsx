@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate, useParams, useSearchParams } from "react-router";
 
 import styles from "./CreateItem.module.scss";
 import { useDBService } from "@/contexts/DBContext";
@@ -14,7 +14,12 @@ export default function CreateItem() {
 
     let navigate = useNavigate();
 
-    let { TableName, Operation, Id } = useParams();
+    const location = useLocation();
+    const Operation = location.pathname.split("/").filter(Boolean).pop();
+
+    let  [searchURLParams, setSearchURLParams] = useSearchParams();
+    let TableName = searchURLParams.get("TableName");
+    let Id = searchURLParams.get("Id");
 
     let [ fields, setFields ] = useState<ITableInfoColumn[]>([]);
     let [ data, setData] = useState({});
@@ -28,21 +33,25 @@ export default function CreateItem() {
     if(Operation != "Create" && Id == undefined) return <h4>Please specify id</h4>
 
     useEffect(() => {
+        TableName = searchURLParams.get("TableName");
+        
         const getFields = async () => {
             setFields(await dbService.GetTableColumns(TableName));
         }
     
         getFields();
-    }, [TableName]);
+    }, [searchURLParams.get("TableName")]);
 
     useEffect(() => {
+        let Id = searchURLParams.get("Id");
+
         const getData = async () => {
             setData(await dbService.GetTableDataById(TableName, ["*"], Id));
         }
 
         if(Id)
             getData();
-    }, [Id]);
+    }, [searchURLParams.get("Id")]);
 
     useEffect(() => {
         const prepareFields = async () => {

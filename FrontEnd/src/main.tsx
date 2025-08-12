@@ -22,7 +22,7 @@ library.add(fas, far, fab);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename='~89231394'>
             <FluentProvider theme={webLightTheme}>
                 <DBProvider>
                     <UserProfileProvider>
