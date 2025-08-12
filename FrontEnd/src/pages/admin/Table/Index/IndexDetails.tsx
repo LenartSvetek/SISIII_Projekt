@@ -10,6 +10,7 @@ import { useDBService } from "@/contexts/DBContext";
 import { IColumn } from "@/components/DetailsList/IDetailsListProps";
 
 export default function IndexDetails() {
+    
     let location = useLocation();
     let navigate = useNavigate();
     let { TableName } = useParams();
@@ -30,6 +31,7 @@ export default function IndexDetails() {
                 };
             }))
         });
+        console.log("Zoo")
 
         DBService.GetTableData(TableName).then(setData);
     }, [TableName]);

@@ -6,7 +6,7 @@ import LeftPanel from "@/components/Layout/LeftPanel/LeftPanel";
 import { useUPS } from "@/contexts/UserProfileContext";
 import { faSquarePollHorizontal } from "@fortawesome/free-solid-svg-icons";
 
-export default function AdminLayout() {
+export default function AdminLayout(props) {
     let location = useLocation();
     let navigate = useNavigate();
     let profileService = useUPS();
@@ -38,7 +38,7 @@ export default function AdminLayout() {
                 <LeftPanel />
             </div>
             <div className={styles.Content}>
-                <Outlet />
+                {props.children}
             </div>
         </div>
     );
